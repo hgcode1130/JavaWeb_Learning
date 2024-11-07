@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-各类基础对象</title>
+</head>
+<body>
+    <script>
+        function add(a , b)
+        {
+            return a + b;
+        }
+        var res = add(10 , 20);
+        alert(res);
+
+        //Array
+        var arr  = [];
+        arr.forEach(function(e)
+        {
+            console.log(e);
+        });//forEach只会遍历defined的元素，而for循环会遍历所有的元素包括undefined
+        
+        //String类型好像跟java的一些差不多charat indexof    trim substring
+
+        //js自定义对象
+        var user = 
+        {
+            name:"Tom",
+            age : 20,
+            gender:"male",
+            // eat:function()
+            // {
+            //     alert("I'm eating!");
+            // }
+            eat()
+            {
+                alert("I'm eating!");
+            }
+        };
+
+        //json对象，其实就是一种文本json格式化
+        //key：value
+        // 如何去访问json中的各个key和value
+        // 第一种：把json转化成一个js对象
+        var jsonstr = '{"name":"Tom","age":20,"addr":["北京","上海"]}';
+        var obj = JSON.parse(jsonstr);
+        alert(obj.name);
+        //将对象转化成json
+        var newJs = JSON.stringify(obj);
+        alert(newJs);
+        //bom浏览器对象模型
+        //Window Navigator Screen History Location
+
+        var a = window.location.href;
+        alert(a);
+        location.href = "https://www.codeforces.com";
+        
+        
+        //dom文档对象模型
+        
+
+    </script>
+</body>
+</html>

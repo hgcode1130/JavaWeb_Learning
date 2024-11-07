@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>课程表</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      margin: 0 auto;
+    }
+
+    th,
+    td {
+      border: 1px solid black;
+      padding: 5px;
+    }
+
+    /* 新增样式用于按钮所在的div */
+   .button-container {
+      text-align: center;
+    }
+
+    button {
+      display: inline-block;
+      margin: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <table id="grade-table">
+    <caption>课程表</caption>
+    <tr>
+      <th>学号</th>
+      <th>姓名</th>
+      <th>分数</th>
+      <th>评语</th>
+    </tr>
+    <tr>
+      <td>001</td>
+      <td>张三</td>
+      <td>90</td>
+      <td>很优秀</td>
+    </tr>
+    <tr>
+      <td>002</td>
+      <td>李四</td>
+      <td>92</td>
+      <td>优秀</td>
+    </tr>
+    <tr>
+      <td>003</td>
+      <td>王五</td>
+      <td>83</td>
+      <td>很努力,不错</td>
+    </tr>
+    <tr>
+      <td>004</td>
+      <td>赵六</td>
+      <td>98</td>
+      <td>666</td>
+    </tr>
+  </table>
+  <div class="button-container">
+    <button onclick="changeCaption()">改变标题内容</button>
+    <button onclick="changeCaptionColor()">改变标题颜色</button>
+    <button onclick="removeLastRow()">删除最后一个</button>
+  </div>
+
+  <script>
+    // 改变标题内容
+    function changeCaption() {
+      var caption = document.querySelector('table caption');
+      caption.textContent = '新的课程表标题';
+    }
+
+    // 改变标题颜色
+    function changeCaptionColor() {
+      var caption = document.querySelector('table caption');
+      caption.style.color = 'red';
+    }
+
+    // 删除最后一行
+    function removeLastRow() {
+      var table = document.getElementById('grade - table');
+      var rows = table.rows;
+      if (rows.length > 1) {
+        table.deleteRow(rows.length - 1);
+      }
+    }
+  </script>
+</body>
+
+</html>
