@@ -52,13 +52,57 @@
         //bom浏览器对象模型
         //Window Navigator Screen History Location
 
-        var a = window.location.href;
-        alert(a);
-        location.href = "https://www.codeforces.com";
+        //var a = window.location.href;
+        //alert(a);
+        //location.href = "https://www.codeforces.com";
         
         
-        //dom文档对象模型
+        //dom文档对象模型        
+        // DOM（文档对象模型）是浏览器为网页提供的一种编程接口，它可以让我们通过JavaScript来操作HTML文档。
+        // 通过DOM，我们可以动态地改变页面的结构、样式和内容。
+        // 获取元素
+        var titleElement = document.getElementById("title"); // 根据ID获取元素
+        titleElement.innerHTML = "欢迎来到我的网页！"; // 修改元素的内容
         
+        var allParagraphs = document.getElementsByTagName("p"); // 获取所有<p>标签的元素
+        for (var i = 0; i < allParagraphs.length; i++) {
+            allParagraphs[i].style.color = "blue"; // 将所有段落的文字颜色改为蓝色
+        }
+
+        // 创建新元素
+        var newDiv = document.createElement("div"); // 创建一个新的<div>元素
+        newDiv.innerHTML = "这是一个新添加的DIV元素！"; // 设置这个元素的内容
+        document.body.appendChild(newDiv); // 将新的DIV添加到body中
+        
+        // 事件处理
+        var button = document.getElementById("myButton");
+        button.onclick = function() {
+            alert("按钮被点击了！");
+        }; // 给按钮添加点击事件
+
+                // DOM（文档对象模型）是浏览器为网页提供的一种编程接口，它可以让我们通过JavaScript来操作HTML文档。
+        // 通过DOM，我们可以动态地改变页面的结构、样式和内容。
+
+        // 获取元素
+        var titleElement = document.getElementById("title"); // 根据ID获取元素
+        titleElement.innerHTML = "欢迎来到我的网页！"; // 修改元素的内容
+        
+        var allParagraphs = document.getElementsByTagName("p"); // 获取所有<p>标签的元素
+        for (var i = 0; i < allParagraphs.length; i++) {
+            allParagraphs[i].style.color = "blue"; // 将所有段落的文字颜色改为蓝色
+        }
+
+        // 创建新元素
+        var newDiv = document.createElement("div"); // 创建一个新的<div>元素
+        newDiv.innerHTML = "这是一个新添加的DIV元素！"; // 设置这个元素的内容
+        document.body.appendChild(newDiv); // 将新的DIV添加到body中
+        
+        // 事件处理
+        var button = document.getElementById("myButton");
+        button.onclick = function() {
+            alert("按钮被点击了！");
+        }; // 给按钮添加点击事件
+
 
     </script>
 </body>

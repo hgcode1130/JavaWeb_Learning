@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,8 +31,21 @@
 </head>
 
 <body>
+  //document中获取元素可以使用getelementbyid，getelementsbyclassname，getelementsbytagname等方法 
+  //getElementById方法获取id为grade-table的table元素
+  //var table = document.getElementById('grade-table');
+  //getelementsbyclassname方法获取class为button-container的div元素
+  //var buttonContainer = document.getElementsByClassName('button-container')[0];
+  //getelementsbytagname方法获取所有table元素
+  //var tables = document.getElementsByTagName('table');
+  //console.log(table);
+  //console.log(buttonContainer); 
   <table id="grade-table">
     <caption>课程表</caption>
+    <!-- 
+    <caption> 标签用于为表格提供一个标题或说明。
+      它通常被放置在 <table> 标签的开头，描述表格的内容或目的。
+        使用 <caption> 可以使表格更加易懂，有助于用户快速了解表格所展示的信息。 -->
     <tr>
       <th>学号</th>
       <th>姓名</th>
@@ -73,7 +87,7 @@
     // 改变标题内容
     function changeCaption() {
       var caption = document.querySelector('table caption');
-      caption.textContent = '新的课程表标题';
+      caption.textContent = 'new课程表';
     }
 
     // 改变标题颜色
@@ -84,7 +98,7 @@
 
     // 删除最后一行
     function removeLastRow() {
-      var table = document.getElementById('grade - table');
+      var table = document.getElementById('grade-table');
       var rows = table.rows;
       if (rows.length > 1) {
         table.deleteRow(rows.length - 1);
