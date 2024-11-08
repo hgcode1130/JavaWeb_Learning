@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js 示例 - v-if 和 v-show</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 30px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 80%;
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #e9ecef;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="container">
+        <h1>展示 v-if 和 v-show</h1>
+        <button @click="toggleIf">切换 v-if 消息</button>
+        <button @click="toggleShow">切换 v-show 消息</button>
+        
+        <div class="message" v-if="showIfMessage">
+            这是通过 v-if 指令控制显示的消息。
+        </div>
+
+        <div class="message" v-show="showShowMessage">
+            这是通过 v-show 指令控制显示的消息。
+        </div>
+    </div>
+
+    <script>
+        // 创建 Vue 实例
+        new Vue({
+            el: '#app',
+            data: {
+                showIfMessage: false,  // 控制 v-if 消息的显示状态
+                showShowMessage: true   // 控制 v-show 消息的显示状态
+            },
+            methods: {
+                toggleIf() {
+                    this.showIfMessage = !this.showIfMessage;  // 切换 v-if 状态
+                },
+                toggleShow() {
+                    this.showShowMessage = !this.showShowMessage;  // 切换 v-show 状态
+                }
+            }
+        });
+    </script>
+</body>
+</html>

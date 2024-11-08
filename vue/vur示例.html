@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js 示例</title>
+    <!-- 引入 Vue.js 库 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        /* 添加一些简单的样式 */
+        body {
+            font-family: Arial, sans-serif; /* 设置字体 */
+            text-align: center; /* 文本居中 */
+            margin-top: 50px; /* 顶部外边距 */
+        }
+        input {
+            padding: 10px; /* 输入框内边距 */
+            width: 300px; /* 输入框宽度 */
+            font-size: 16px; /* 字体大小 */
+        }
+    </style>
+</head>
+<body>
+    <!-- Vue.js 应用的根元素 -->
+    <div id="app">
+        <h1>{{ message }}</h1> <!-- 显示消息 -->
+        <input v-model="message" placeholder="请输入消息"> <!-- 双向绑定输入框 -->
+        <p>你输入的内容是：{{ message }}</p> <!-- 显示输入的内容 -->
+    </div>
+
+    <script>
+        // 创建 Vue 实例
+        new Vue({
+            el: '#app', // 指定 Vue 实例挂载的元素
+            data: {
+                // 定义数据属性
+                message: '欢迎使用 Vue.js!' // 默认消息
+            },
+            methods: {
+                // 可以在这里定义方法
+                // 例如：当输入框的内容变化时可以执行某些逻辑
+            }
+        });
+    </script>
+</body>
+</html>

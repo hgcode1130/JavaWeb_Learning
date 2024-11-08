@@ -1,0 +1,78 @@
+// 事件监听综合示例
+<!-- 使用浏览器打开该文件。
+你可以点击“点击我”按钮，显示点击消息；点击“显示悬停盒子”按钮来显示悬停盒子，并在盒子上悬停时查看文本；在输入框中输入文本以查看按下的键。
+这个代码将所有的事件监听功能整合在一起，方便你同时观察和测试。 -->
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件监听综合示例</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #hoverBox {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(255, 0, 0);
+            margin: 0 auto;
+            display: none; /* 初始隐藏 */
+        }
+    </style>
+</head>
+<body>
+    <h1>事件监听示例</h1>
+
+    <!-- 点击事件 -->
+    <button id="myButton">点击我</button>
+    <p id="message"></p>
+
+    <!-- 鼠标悬停事件 -->
+    <button id="showHoverBox">显示悬停盒子</button>
+    <div id="hoverBox"></div> <!-- 悬停盒子 -->
+    <p id="hoverMessage"></p>
+
+    <!-- 键盘事件 -->
+    <input type="text" id="textInput" placeholder="输入一些文字">
+    <p id="keyMessage"></p>
+
+    <script>
+        // 点击事件
+        const button = document.getElementById('myButton');
+        const message = document.getElementById('message');
+
+        button.addEventListener('click', function() {
+            message.textContent = '你点击了按钮！';
+        });
+
+        // 鼠标悬停事件
+        const showHoverBox = document.getElementById('showHoverBox');
+        const hoverBox = document.getElementById('hoverBox');
+        const hoverMessage = document.getElementById('hoverMessage');
+
+        showHoverBox.addEventListener('click', function() {
+            hoverBox.style.display = 'block'; // 显示悬停盒子
+        });
+
+        hoverBox.addEventListener('mouseover', function() {
+            hoverMessage.textContent = '鼠标悬停在盒子上！';
+        });
+
+        hoverBox.addEventListener('mouseout', function() {
+            hoverMessage.textContent = 'mouseout';
+        });
+
+        // 键盘事件
+        const textInput = document.getElementById('textInput');
+        const keyMessage = document.getElementById('keyMessage');
+
+        textInput.addEventListener('keydown', function(event) {
+            keyMessage.textContent = `你按下了: ${event.key}`; // 显示按下的键，一种格式化输出
+        });
+    </script>
+</body>
+</html>

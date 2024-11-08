@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js 示例 - v-bind 和 v-model</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 30px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 80%;
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            padding: 10px;
+            width: calc(100% - 22px);
+            font-size: 16px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<!-- 数据验证：增加了用户输入的验证功能，确保用户输入的姓名不为空，年龄为正数，否则会显示错误提示。
+输出结果默认值：在输出结果中，如果姓名或年龄未填写，显示“未填写”而不是空字符串，给用户更明确的提示。
+提交按钮：当用户点击“提交”按钮时，表单会进行验证，如果所有输入有效，弹出一个提示框显示用户信息。 -->
+<body>
+    <div id="app" class="container">
+        <h1>用户信息</h1>
+        <input v-model="name" placeholder="请输入姓名">
+        <div class="error" v-if="nameError">{{ nameError }}</div>
+        
+        <input v-model.number="age" type="number" placeholder="请输入年龄" min="0">
+        <div class="error" v-if="ageError">{{ ageError }}</div>
+        
+        <h2>输出结果</h2>
+        <p>姓名: <span v-bind:title="name">{{ name || '未填写' }}</span></p>
+        <p>年龄: <span v-bind:title="age">{{ age !== null ? age : '未填写' }}</span></p>
+        
+        <button @click="submit">提交</button>
+
+        <input type="text" v-model="url" placeholder="请输入外部链接">
+
+        <h2>外部链接</h2>
+        <a :href="url" target="_blank">百度</a>    
+    </div>
+
+    <script>
+        // 创建 Vue 实例
+        new Vue({
+            el: '#app',
+            data: {
+                name: '',
+                age: null,
+                nameError: '',
+                ageError: '',
+                url:"https://www.baidu.com"
+            },
+            methods: {
+                validate() {
+                    this.nameError = this.name === '' ? '姓名不能为空！' : '';
+                    this.ageError = this.age === null || this.age < 0 ? '年龄必须为正数！' : '';
+                    return this.nameError === '' && this.ageError === '';
+                },
+                submit() {
+                    if (this.validate()) {
+                        alert(`提交成功！\n姓名: ${this.name}\n年龄: ${this.age}`);
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>丰富的 Vue.js 示例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 30px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            padding: 10px;
+            width: calc(100% - 22px);
+            font-size: 16px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        .item {
+            background: #e9ecef;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="container">
+        <h1>{{ title }}</h1>
+        <input v-model="newMessage" placeholder="请输入新消息">
+        <button @click="addMessage">添加消息</button>
+        
+        <h2>消息列表</h2>
+        <div v-if="messages.length === 0">没有消息！</div>
+        <div v-for="(message, index) in messages" :key="index" class="item">
+            {{ message }}
+            <button @click="removeMessage(index)">删除</button>
+            <button @click="editMessage(index)">编辑</button>
+        </div>
+        
+        <h2>编辑消息</h2>
+        <div v-if="selectedIndex !== null">
+            <input v-model="editedMessage" placeholder="编辑消息">
+            <button @click="updateMessage">更新消息</button>
+            <button @click="selectedIndex = null">取消</button>
+        </div>
+    </div>
+
+    <script>
+        // 创建 Vue 实例
+        new Vue({
+            el: '#app',
+            data: {
+                title: '欢迎使用 Vue.js 丰富的示例',
+                newMessage: '',
+                messages: [],
+                selectedIndex: null,
+                editedMessage: ''
+            },
+            methods: {
+                // 添加新消息的方法
+                addMessage() {
+                    if (this.newMessage.trim()) {
+                        this.messages.push(this.newMessage);
+                        this.newMessage = '';
+                    } else {
+                        alert('请输入有效的消息！');
+                    }
+                },
+                // 删除消息的方法
+                removeMessage(index) {
+                    this.messages.splice(index, 1);
+                },
+                // 编辑消息的方法
+                editMessage(index) {
+                    this.selectedIndex = index;
+                    this.editedMessage = this.messages[index];
+                },
+                // 更新消息的方法
+                updateMessage() {
+                    if (this.editedMessage.trim()) {
+                        this.$set(this.messages, this.selectedIndex, this.editedMessage);
+                        this.editedMessage = '';
+                        this.selectedIndex = null;
+                    } else {
+                        alert('请输入有效的消息！');
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
